@@ -6,6 +6,9 @@
     <arg name="length" default="0.22"/> <!-- not-in-map markers length, m -->
     <arg name="map" default="map.txt"/> <!-- markers map file name -->
 
+    <arg name="length_override" default="true"/>
+    <arg name="override_id" default="2"/>
+    <arg name="override_lenght" default="0.072"/>
 
     <arg name="force_init" default="false"/>
     <arg name="disable" default="false"/> <!-- only force init -->
@@ -15,10 +18,10 @@
         <remap from="image_raw" to="/main_camera/image_raw"/>
         <remap from="camera_info" to="/main_camera/camera_info"/>
         <remap from="map_markers" to="/aruco_map/map"/>
-
+        <param name="dictionary" value="2"/> <!-- DICT_4X4_250 -->
         <param name="estimate_poses" value="true"/>
         <param name="send_tf" value="true"/>
-        <param name="use_map_markers" value="true"/>
+        <param name="use_map_markers" value="$(arg aruco_map)"/>
         <param name="known_vertical" value="map" if="$(eval placement == 'floor' or placement == 'ceiling')"/>
         <param name="flip_vertical" value="true" if="$(eval placement == 'ceiling')"/>
         <param name="length" value="$(arg length)"/>
@@ -28,6 +31,7 @@
         <param name="minMarkerPerimeterRate" value="0.075"/> <!-- 0.075 for 320x240, 0.0375 for 640x480 -->
         <!-- length override example: -->
         <!-- <param name="length_override/3" value="0.1"/> -->
+        <param name="length_override/$(arg override_id)" value="$(arg override_lenght)" if="$(arg length_override)"/>
     </node>
 
     <!-- aruco_map: estimate aruco map pose -->
