@@ -29,6 +29,7 @@
   <depend>rostest</depend>
   <depend>dynamic_reconfigure</depend>
   <depend>cv_camera</depend>
+  <depend>usb_cam</depend>
 
   <test_depend>image_publisher</test_depend>
   <test_depend>ros_pytest</test_depend>
