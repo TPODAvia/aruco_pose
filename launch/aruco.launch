@@ -2,7 +2,7 @@
     <arg name="aruco_detect" default="true"/>
     <arg name="aruco_map" default="false"/>
     <arg name="aruco_vpe" default="false"/>
-    <arg name="placement" default="floor"/> <!-- markers placement: floor, ceiling, unknown -->
+    <arg name="placement" default="unknown"/> <!-- markers placement: floor, ceiling, unknown -->
     <arg name="length" default="0.22"/> <!-- not-in-map markers length, m -->
     <arg name="map" default="map.txt"/> <!-- markers map file name -->
 
@@ -21,7 +21,7 @@
         <remap from="image_raw" to="$(arg image_topic)"/>
         <remap from="camera_info" to="$(arg image_info)"/>
         <remap from="map_markers" to="/aruco_map/map"/>
-        <param name="dictionary" value="2"/> <!-- DICT_4X4_250 -->
+        <param name="dictionary" value="8"/> <!-- DICT_6X6_50 -->
         <param name="estimate_poses" value="true"/>
         <param name="send_tf" value="true"/>
         <param name="use_map_markers" value="$(arg aruco_map)"/>
@@ -42,6 +42,7 @@
         <remap from="image_raw" to="$(arg image_topic)"/>
         <remap from="camera_info" to="$(arg image_info)"/>
         <remap from="markers" to="/aruco_detect/markers"/>
+        <param name="dictionary" value="8"/> <!-- DICT_6X6_50 -->
         <param name="map" value="$(find aruco_pose)/map/$(arg map)"/>
         <param name="known_vertical" value="map" if="$(eval placement == 'floor' or placement == 'ceiling')"/>
         <param name="flip_vertical" value="true" if="$(eval placement == 'ceiling')"/>

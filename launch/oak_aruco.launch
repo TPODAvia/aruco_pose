@@ -1,15 +1,15 @@
 <launch>
 
   <arg name="enableRviz"            default="true"/>
-  
+
   <node pkg="nodelet" type="nodelet" name="main_camera_nodelet_manager" args="manager" output="screen" clear_params="true" respawn="true">
       <param name="num_worker_threads" value="2"/>
   </node>
 
   <include file="$(find aruco_pose)/launch/aruco.launch">
 
-      <arg name="image_topic" value="/usb_cam/image_raw"/>
-      <arg name="image_info" value="/usb_cam/camera_info"/>
+      <arg name="image_topic" value="/camera/rgb/image_raw"/>
+      <arg name="image_info" value="camera/rgb/camera_info"/>
 
       <arg name="force_init" value="false"/>
       <arg name="disable" value="false"/>
@@ -19,19 +19,15 @@
       <arg name="length_override" value="false"/>
       <arg name="override_id" value="10"/>
       <arg name="override_lenght" value="0.18"/>
+
+      <arg name="aruco_map" value="true"/>
   
   </include>
 
   <!-- cp ~/catkin_ws/src/aruco_pose/config/head_camera.yaml ~/.ros/camera_info/head_camera.yaml -->
-  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
-    <param name="video_device" value="/dev/video0" />
-    <param name="image_width" value="800" />
-    <param name="image_height" value="448" />
-    <param name="pixel_format" value="yuyv" />
-    <param name="color_format" value="yuv422p" />
-    <param name="camera_frame_id" value="usb_cam" />
-    <param name="io_method" value="mmap"/>
-  </node>
+  <include file="$(find aruco_pose)/launch/oak_bringup.launch">
+      <arg name="enableRviz" value="$(arg  enableRviz)"/>
+  </include>
 
   <!-- <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
     <remap from="image" to="/usb_cam/image_raw"/>

@@ -30,6 +30,7 @@
   <depend>dynamic_reconfigure</depend>
   <depend>cv_camera</depend>
   <depend>usb_cam</depend>
+  <depend>depthai-ros</depend>
 
   <test_depend>image_publisher</test_depend>
   <test_depend>ros_pytest</test_depend>
