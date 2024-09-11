@@ -53,8 +53,8 @@
 
     <arg name="enableDotProjector"    default="true"/>
     <arg name="enableFloodLight"      default="true"/>
-    <arg name="dotProjectormA"        default="2000.0"/>
-    <arg name="floodLightmA"          default="2000.0"/>
+    <arg name="dotProjectormA"        default="300.0"/>
+    <arg name="floodLightmA"          default="300.0"/>
     <arg name="enableRviz"            default="true"/>
     <arg name="enableMarkerPublish"   default="false" />
 
