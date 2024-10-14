@@ -9,6 +9,7 @@ Panels:
         - /DepthCloud1/Auto Size1
         - /Imu1/Acceleration properties1
         - /RobotModel1/Links1
+        - /TF1
         - /TF1/Frames1
         - /InteractiveImage1
       Splitter Ratio: 0.5406301617622375
@@ -30,7 +31,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: Camera
+    SyncSource: InteractiveImage
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -197,15 +198,9 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        aruco_1:
+        joystick_tf:
           Value: true
-        aruco_2:
-          Value: true
-        aruco_3:
-          Value: true
-        aruco_4:
-          Value: true
-        aruco_map:
+        map:
           Value: true
         oak-d-base-frame:
           Value: true
@@ -227,6 +222,8 @@ Visualization Manager:
           Value: true
         oak_right_camera_optical_frame:
           Value: true
+        realsense_phantom_link:
+          Value: true
         rviz_frame:
           Value: true
       Marker Alpha: 1
@@ -236,14 +233,8 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        aruco_map:
-          aruco_1:
-            {}
-          aruco_2:
-            {}
-          aruco_3:
-            {}
-          aruco_4:
+        map:
+          joystick_tf:
             {}
         oak-d-base-frame:
           oak-d_frame:
@@ -261,11 +252,12 @@ Visualization Manager:
             oak_right_camera_frame:
               oak_right_camera_optical_frame:
                 {}
+        realsense_phantom_link:
+          {}
       Update Interval: 0
       Value: true
     - Camera_Info Topic: /camera/stereo/camera_info
       Class: rviz_plugin_interactive_image/InteractiveImage
-      Custom String: oak_rgb_camera_optical_frame
       Enabled: true
       Image Topic: /camera/depth/image_raw
       Max Value: 1
@@ -273,6 +265,7 @@ Visualization Manager:
       Min Value: 0
       Name: InteractiveImage
       Normalize Range: false
+      Parent tf: oak_rgb_camera_optical_frame
       Pitch (deg): 0
       Point Topic: hello
       Queue Size: 2
@@ -281,6 +274,7 @@ Visualization Manager:
       React to Mouse Move: false
       React to Mouse Release: false
       Roll (deg): 0
+      Scale unit: 0.0010000000474974513
       Transport Hint: raw
       Unreliable: false
       Value: true
@@ -316,7 +310,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.7759666442871094
+      Distance: 2.0719263553619385
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -324,17 +318,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.34253135323524475
-        Y: 0.4143511652946472
-        Z: 0.2688044607639313
+        X: 0.0940433219075203
+        Y: 0.14131060242652893
+        Z: 0.19376535713672638
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7053976058959961
+      Pitch: 0.6903976202011108
       Target Frame: <Fixed Frame>
-      Yaw: 2.5771982669830322
+      Yaw: 2.7021985054016113
     Saved: ~
 Window Geometry:
   Camera:
